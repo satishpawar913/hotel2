@@ -1,14 +1,16 @@
 package com.example.demo.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ROOM")
+@Table(name = "room")
 public class Rooms {
 
 	@Id
@@ -31,6 +33,26 @@ public class Rooms {
 
 	@ManyToOne
 	private User user;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "rooms_room_id")
+	private Rooms room;
+
+	public int getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
+	}
+
+	public Rooms getRoom() {
+		return room;
+	}
+
+	public void setRoom(Rooms room) {
+		this.room = room;
+	}
 
 	public int getrId() {
 		return roomId;
@@ -167,6 +189,10 @@ public class Rooms {
 				+ ", price=" + price + ", adults=" + adults + ", children=" + children + ", category=" + category
 				+ ", special_instructions=" + special_instructions + ", total_price=" + total_price + ", total_days="
 				+ total_days + ", cId=" + cId + ", user=" + user + "]";
+	}
+
+	public Object getRooms() {
+		return null;
 	}
 
 }

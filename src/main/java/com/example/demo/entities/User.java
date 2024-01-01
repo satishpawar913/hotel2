@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "user")
 public class User {
 
 	@Id
@@ -28,7 +28,7 @@ public class User {
 	private boolean enabled;
 	private String country;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Rooms> rooms = new ArrayList<>();
 
 	public User() {

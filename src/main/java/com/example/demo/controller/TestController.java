@@ -56,8 +56,6 @@ public class TestController {
 	@Autowired
 	private RoomRepository roomRepository;
 
-	@Autowired
-	private EmployeeRepository employeeRepository;
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String start() {

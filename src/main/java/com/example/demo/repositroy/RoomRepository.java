@@ -1,6 +1,7 @@
 package com.example.demo.repositroy;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,9 @@ public interface RoomRepository extends JpaRepository<Rooms, Integer> {
 
 	@Query("select u from Rooms u where u.cId = :cId")
 	List<Rooms> findByCId(int cId);
+	
+	@Query("select u from Rooms u where u.roomId = :roomId")
+	Optional<Rooms> findRoomById(Integer roomId);
+
+	void deleteById(int id);
 }
